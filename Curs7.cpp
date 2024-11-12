@@ -192,6 +192,14 @@ public:
 
 };
 
+void f(int a) {
+
+}
+
+void f(float b) {
+
+}
+
 void main() {
 	Marker marker1("Rosu", 53, 10);
 	Marker marker2("Albastru", 45, 12);
@@ -211,9 +219,62 @@ void main() {
 	////a=?, 5, 6   ---   b=?, 6, 7
 	////a=6 --- b=6
 
-	int a = 5;
-	int b = 7;
-	b = a++;
-	//a=?, 5,5 , 6  ---   b=?, 6, 8, 5
-	//a=6, b=5
+	//int a = 5;
+	//int b = 7;
+	//b = a++;
+	////a=?, 5,5 , 6  ---   b=?, 6, 8, 5
+	////a=6, b=5
+
+	//float x = 7.8;
+	//int y = (int)x;
+	//char z = 0;
+	//f(z);
+
+	int lungime = 3;
+	Marker* pointer = new Marker("Rosu", 20, 11);
+	Marker* vector = new Marker[lungime];
+
+	vector[0] = *pointer;
+	vector[1] = marker1;
+
+	cout << *pointer<<endl<<endl;
+
+	for (int i = 0; i < lungime; i++) {
+		cout << vector[i]<<endl;
+	}
+
+	Marker** vectorPointeri = new Marker * [lungime+1];
+	vectorPointeri[0] = pointer;
+	vectorPointeri[1] = &marker1;
+	vectorPointeri[2] = &vector[1];//vector+1
+	vectorPointeri[3] = new Marker("Verde", 56, 9);
+
+	vector[2] = *vectorPointeri[1];
+
+
+	delete pointer;
+	delete[] vector;
+	
+	//for (int i = 0; i < lungime; i++) {
+	//	delete vectorPointeri[i];
+	//}
+	delete vectorPointeri[3];
+
+	delete[]vectorPointeri;
+
+	Marker** matrice;
+	matrice = new Marker*[lungime];
+	for (int i = 0; i < lungime; i++) {
+		matrice[i] = new Marker[lungime];
+	}
+
+	for (int i = 0; i < lungime; i++) {
+		delete[]matrice[i];
+	}
+	delete[]matrice;
+
+
+	Marker::getNumarObiecte();
+	marker1.getNumarObiecte();
+	functieGlobala(marker1);
 }
