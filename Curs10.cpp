@@ -6,6 +6,19 @@ using namespace std;
 //
 //	virtual void scoateSunete() = 0;
 //};
+namespace exceptii {
+	class ParametruIncorect :public exception {
+	private:
+		string mesaj;
+	public:
+		ParametruIncorect(string mesaj) {
+			this->mesaj = mesaj;
+		}
+		string getMesajExceptie() {
+			return mesaj;
+		}
+	};
+}
 
 
 class InstrumentDeScris {
@@ -14,7 +27,9 @@ public:
 	InstrumentDeScris() {
 		this->culoare = "Albastru";
 	}
+	virtual ~InstrumentDeScris() {
 
+	}
 	virtual void afisare() = 0;
 	virtual void afisare2() = 0;
 };
@@ -113,6 +128,27 @@ public:
 	void setCuloare(string nouaCuloare) {
 		if (nouaCuloare.length() > 2) {
 			this->culoare = nouaCuloare;
+		}
+		else {
+			throw exception("Culoarea nu are lungimea necesara");
+		}
+	}
+
+	void setGreutate(float greutate) {
+		if (greutate > 0) {
+			this->greutate = greutate;
+		}
+		else {
+			throw exceptii::ParametruIncorect("Greutatea este prea mica");
+		}
+	}
+
+	void setLungime(int lungime) {
+		if (lungime > 0) {
+			this->lungime = lungime;
+		}
+		else {
+			throw exceptii::ParametruIncorect("Lungimea este prea mica");
 		}
 	}
 
@@ -325,10 +361,44 @@ void main() {
 
 	
 
-	MarkerDublu md;
-	cout<<md.Marker::getCuloare();
+	//MarkerDublu md;
+	//cout<<md.Marker::getCuloare();
 
-	InstrumentDeScris* ids = new Marker();;
+	//InstrumentDeScris* ids = new Marker("Rosu",45,15);
+
+	Marker m("Verde", 45, 15);
+	try {
+		
+		m.setCuloare("Verde");
+		m.setGreutate(-56);
+		m.setLungime(-20);
+		cout << m;
+
+	}
+	catch (int codEroare) {
+		cout << "Avem exceptia cu codul:" << codEroare << endl;
+	}
+	catch (exceptii::ParametruIncorect pi) {
+		cout <<"PI:"<< pi.getMesajExceptie() << endl;
+	}
+	catch (string exceptie) {
+		cout << "Exceptie!!!! ANTENTIE!!! "<<exceptie << endl;
+	}
+	catch (exception ex) {
+		cout << ex.what() << endl;
+	}
+	catch (exception* ert) {
+		cout << ert->what() << endl;
+	}
+	catch (...) {
+		cout << "A fost captata o exceptie necunoscuta"<<endl;
+	}
+
+	//delete ids;
+
+
+
+
 
 
 }
