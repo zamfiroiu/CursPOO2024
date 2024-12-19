@@ -102,7 +102,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -127,12 +127,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CorectareLucrare.cpp" />
+    <ClCompile Include="Curs10.cpp" />
+    <ClCompile Include="Curs12.cpp" />
+    <ClCompile Include="Curs9_01_manipulatori.cpp" />
+    <ClCompile Include="Curs9_02_manipulatori.cpp" />
+    <ClCompile Include="Curs9_03_manipulatori.cpp" />
+    <ClCompile Include="Curs9_04_getLine.cpp" />
+    <ClCompile Include="Curs9_05_FstreamFile.cpp" />
+    <ClCompile Include="Curs9_06_scriereFIsiereBInare.cpp" />
+    <ClCompile Include="Curs9_07_ObiecteInFisiereBinare.cpp" />
     <ClCompile Include="Curs 2.cpp" />
     <ClCompile Include="Curs1.cpp" />
     <ClCompile Include="Curs3.cpp" />
     <ClCompile Include="Curs4.cpp" />
     <ClCompile Include="Curs6.cpp" />
     <ClCompile Include="Curs7.cpp" />
+    <ClCompile Include="Curs8.cpp" />
+    <ClCompile Include="CursFIsiereSeriaA.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
